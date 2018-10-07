@@ -1,0 +1,477 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>MLM</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/jquery.layout/dist/layout-default-latest.css" />
+    <link rel="stylesheet" href="bower_components/blueimp-file-upload/css/jquery.fileupload.css" />
+    <link rel="stylesheet" href="bower_components/blueimp-file-upload/css/jquery.fileupload-ui.css" />
+    <link rel="stylesheet" href="bower_components/blueimp-file-upload/css/jquery.fileupload-noscript.css" />
+    <link rel="stylesheet" href="bower_components/blueimp-file-upload/css/jquery.fileupload-ui-noscript.css" />
+    <link rel="stylesheet" href="bower_components/pnotify/pnotify.core.css" />
+    <link rel="stylesheet" href="bower_components/pnotify/pnotify.buttons.css" />
+    <link rel="stylesheet" href="bower_components/pnotify/pnotify.history.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+      <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css"/>
+    <!-- build:css(.tmp) styles/main.css -->
+      <link rel="stylesheet" href="styles/primitives.latest.css">
+      <link rel="stylesheet" href="styles/main.css">
+
+
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+
+  </head>
+  <body>
+  <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Habitos Saludables Simulator (RC)</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+              <ul class="nav navbar-nav navbar-right">
+                  <!--li><a href="#">Link</a></li-->
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Image Storage</a></li>
+                          <li><a href="#">Database Settings</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">About</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+  </nav>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <!-- Menu Options -->
+                <!-- This has to be  -->
+                <div >
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    Network
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h5>MLM Structure</h5>
+                                        <a href="#" class="btn btn-info btn-block" id="importbtn">Import</a>
+                                        <a href="#" download="mlmstructure.txt" id="exportbtn" class="btn btn-primary btn-block">Export</a>
+                                        <div class="hide">
+                                            <input type="file" name="attachment" id="treeimport" />
+                                        </div>
+                                        <hr/>
+
+                                    <form role="form" id="nodeForm">
+                                        <div class="form-group">
+                                            <h5>Add user <a href="#" id="btnQuickAdd" class="btn btn-info btn-xs pull-right">Quick Add</a></h5>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    Code
+                                                </span>
+                                                <input type="input" name="id" class="form-control input-sm" placeholder="Person Code">
+                                                <span class="input-group-addon">
+                                                    <input type="checkbox" name="personactive" checked="checked">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    Name
+                                                </span>
+                                                <input type="input" name="name" class="form-control input-sm" placeholder="Person Name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control input-sm" name="rank"></select>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="newrank"> <strong>Person just got rank?</strong>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="btn-group btn-group-justified">
+                                                <a href="#" class="btn btn-info newImage">Upload Picture </a>
+                                                <a href="#" class="btn btn-primary defaultImage">Default</a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group text-center">
+                                            <i class="imageProgress"></i>
+                                            <img src="images/user.jpg" class="personPhoto img-responsive img-rounded">
+                                            <div class="hide">
+                                                <input type="hidden" name="photo" value="images/user.jpg">
+                                                <div class="uploadControl"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    Sponsor
+                                                </span>
+                                            <input type="input" name="sponsor" class="form-control input-sm" placeholder="Sponsor Code">
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    Position
+                                                </span>
+                                            <input type="input" name="parent" class="form-control input-sm" placeholder="Position code (under who)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    Joined Date
+                                                </span>
+                                                <input type="date" name="joineddate" class="form-control input-sm" placeholder="yyyy-mm-dd">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    VP
+                                                </span>
+                                                <input type="number" name="vp" class="form-control input-sm" placeholder="Personal Volume (VP)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    VG
+                                                </span>
+                                            <input type="input" name="vg" class="form-control input-sm" placeholder="Global Volume (VG)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-success btn-block" id="btnAdd">Add Person</button>
+                                            <button class="btn btn-default btn-block" id="btnClear">Clean Fields</button>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                    Execution
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                <h5>Select Bonuses</h5>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="" checked="checked">
+                                        Residual Bonus
+                                    </label>
+
+                                    <div class="btn-group pull-right">
+                                        <a class="btn btn-primary btn-xs" onclick="javascript:CalculaBonoResidual();">Execute <i class="fa fa-refresh"></i></a>
+                                        <a href="reports/residual-bonus.html" id="residualbonusbtn" target="_blank" class="btn btn-info btn-xs">Report <i class="fa fa-calculator"></i></a>
+                                    </div>
+
+                                    <hr/>
+                                </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="" checked="checked">
+                                                Mentor Bonus
+                                            </label>
+                                            <div class="btn-group pull-right">
+                                                <a class="btn btn-primary btn-xs" onclick="javascript:CalculateMentorBonus();">Execute <i class="fa fa-refresh"></i></a>
+                                                <a href="reports/mentor-bonus.html" id="mentorbonusbtn" target="_blank" class="btn btn-info btn-xs">Report <i class="fa fa-calculator"></i></a>
+                                            </div>
+                                            <hr/>
+                                        </div>
+                                <div class="checkbox disabled">
+                                    <label>
+                                        <input type="checkbox" value="" checked="checked">
+                                        First Level Bonus
+                                    </label>
+                                    <div class="btn-group pull-right">
+                                        <a class="btn btn-primary btn-xs" onclick="javascript:CalculateFirstLevelBonus();">Execute <i class="fa fa-refresh"></i></a>
+                                        <a href="reports/firstlevel-bonus.html" id="firstlevelbtn" target="_blank" class="btn btn-info btn-xs">Report <i class="fa fa-calculator"></i></a>
+                                    </div>
+                                    <hr/>
+                                </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="" checked="checked">
+                                                Rank upgrade bonus
+                                            </label>
+                                            <div class="btn-group pull-right">
+                                                <a class="btn btn-primary btn-xs" onclick="javascript:CalculateRankAdvancedBonus();">Execute <i class="fa fa-refresh"></i></a>
+                                                <a href="reports/rankadvance-bonus.html" id="advancedRankbtn" target="_blank" class="btn btn-info btn-xs">Report <i class="fa fa-calculator"></i></a>
+                                            </div>
+                                            <hr/>
+                                        </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="" checked="checked">
+                                       Fast Start Bonus
+                                    </label>
+                                    <div class="btn-group pull-right">
+                                        <a class="btn btn-primary btn-xs" onclick="javascript:CalculateFastStartBonus();">Execute <i class="fa fa-refresh"></i></a>
+                                        <a href="reports/faststart-bonus.html" id="Faststartbtn" target="_blank" class="btn btn-info btn-xs">Report <i class="fa fa-calculator"></i></a>
+                                    </div>
+                                    <hr/>
+                                </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#collapseFour">
+                                    Configuration
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <button id="conf_residual" class="btn btn-default btn-sm btn-block left"><i class="fa fa-gear"></i> Residual</button>
+                                        <button id="conf_mentor" class="btn btn-default btn-sm btn-block left"><i class="fa fa-gear"></i> Mentor</button>
+                                        <button id="conf_first" class="btn btn-default btn-sm btn-block left"><i class="fa fa-gear"></i> First Level</button>
+                                        <button id="conf_upgrade" class="btn btn-default btn-sm btn-block left"><i class="fa fa-gear"></i> Rank Upgrade</button>
+                                        <button id="conf_fast" class="btn btn-default btn-sm btn-block left"><i class="fa fa-gear"></i> Fast Start</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- End Menu Options -->
+
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Element Status Description: </strong>
+                        <span class="node-item selected"></span> Selected
+                        <span class="node-item enabled"></span> Enabled
+                        <span class="node-item disabled"></span> Disabled
+                        <span class="node-item sponsored"></span> Sponsored
+                        <div class="pull-right">
+                            Fit in view <input type="checkbox" id="orgFit" checked="checked">
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="basicdiagram" style="width: 100%; min-height: 800px; border-style: dotted; border-width: 1px;" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--div id="dialog" title="Basic dialog">
+        <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+    </div-->
+
+    <!-- it should be moved to a template -->
+    <div id="NodeEdit" title="Distributor Data">
+        <form role="form" id="nodeModalForm">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                            Code
+                        </span>
+                    <input type="hidden" name="edit" value="true" data-value="present item tells app this is form editing. Its needed because css clases and names are shared" >
+                    <input type="input" name="id" class="form-control input-sm" placeholder="Person Code">
+                        <span class="input-group-addon">
+                            <input type="checkbox" name="personactive">
+                        </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        Name
+                    </span>
+                    <input type="input" name="name" class="form-control input-sm" placeholder="Person Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-info newImage">Upload Picture </a>
+                    <a href="#" class="btn btn-primary defaultImage">Default</a>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <i class="imageProgress"></i>
+                <img src="images/user.jpg" class="personPhoto img-responsive img-rounded">
+                <div class="hide">
+                    <input type="hidden" name="photo" value="images/user.jpg">
+                    <div class="uploadControl"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <select class="form-control input-sm" name="rank"></select>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="newrank"> <strong>Person just got rank?</strong>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        Sponsor
+                    </span>
+                    <input type="input" name="sponsor" class="form-control input-sm" placeholder="Sponsor Code">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        Position
+                    </span>
+                    <input type="input" name="parent" class="form-control input-sm" placeholder="Position code (under who)">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        Joined Date
+                    </span>
+                    <input type="date" name="joineddate" class="form-control input-sm" placeholder="yyyy-mm-dd">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        VP
+                    </span>
+                    <input type="number" name="vp" class="form-control input-sm" placeholder="Personal Volume (VP)">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        VG
+                    </span>
+                    <input type="number" name="vg" class="form-control input-sm" placeholder="Global Volume (VG)">
+                </div>
+            </div>
+        </form>
+    </div>
+
+  <div id="paramConfiguration" title="Configuration Data">
+      <form role="form"></form>
+  </div>
+
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-xs-12">
+              <hr/>
+              <p class="text-center">
+                    by Cloud & Web Solutions S.A de C.V <br/>
+                    <a href="http://www.cloudandweb.com" target="_blank">www.cloudandweb.com</a>
+              </p>
+          </div>
+      </div>
+  </div>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/jQuery.serializeObject/jQuery.serializeObject.js"></script>
+    <script src="bower_components/jquery.layout/dist/jquery.layout-latest.js"></script>
+    <script src="bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
+    <script src="bower_components/jquery-cloudinary/js/jquery.cloudinary.js"></script>
+    <script src="bower_components/jquery.iframe-transport/jquery.iframe-transport.js"></script>
+    <script src="bower_components/pnotify/pnotify.core.js"></script>
+    <script src="bower_components/pnotify/pnotify.buttons.js"></script>
+    <script src="bower_components/pnotify/pnotify.callbacks.js"></script>
+    <script src="bower_components/pnotify/pnotify.confirm.js"></script>
+    <script src="bower_components/pnotify/pnotify.desktop.js"></script>
+    <script src="bower_components/pnotify/pnotify.history.js"></script>
+    <script src="bower_components/pnotify/pnotify.nonblock.js"></script>
+    <script src="bower_components/FileSaver/FileSaver.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js(.) scripts/plugins.js -->
+        <script src="bower_components/bootstrap/js/collapse.js"></script>
+        <script src="bower_components/bootstrap/js/transition.js"></script>
+        <script src="bower_components/bootstrap/js/dropdown.js"></script>
+
+        <script src="bower_components/jquery-template/jquery-loadTemplate/jquery.loadTemplate-1.4.4.js"></script>
+        <script src="bower_components/jQuery.serializeObject/jquery.serializeObject.js"></script>
+        <script src="bower_components/accounting.js/accounting.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js({app,.tmp}) scripts/app-logic.js -->
+        <script src="scripts/primitives.min.js"></script>
+        <script src="scripts/data/hhmx/package-info.js"></script>
+        <script src="scripts/sample-data.js"></script>
+        <script src="scripts/utilities.js"></script>
+        <script src="scripts/MLMTree.js"></script>
+        <script src="scripts/MLMPrograms.js"></script>
+        <script src="scripts/data/hhmx/algorithm/bonoResidual.js"></script>
+        <script src="scripts/data/hhmx/algorithm/bonoMentor.js"></script>
+        <script src="scripts/data/hhmx/algorithm/bonoPrimernivel.v3.js"></script>
+        <script src="scripts/data/hhmx/algorithm/bonoAvanceRango.js"></script>
+        <script src="scripts/data/hhmx/algorithm/bonoInicioRapido.js"></script>
+        <script src="scripts/VariableDataBind.js"></script>
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+
+
+</body>
+</html>

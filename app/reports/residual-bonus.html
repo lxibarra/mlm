@@ -1,0 +1,217 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>MLM</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) ../styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+    <!-- build:css(.tmp) ../styles/main.css -->
+    <link rel="stylesheet" href="../../styles/main.css">
+    <!-- endbuild -->
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Residual Bonus - Report</a>
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="panel panel-success">
+                    <div class="panel-heading text-center">
+                        <h4>INCOME</h4>
+                    </div>
+                    <div class="panel-body text-center">
+                        <h1 class="TotalIncome hidden-xs hidden-sm hidden-md">$0</h1>
+                        <p><strong class="TotalIncome hidden-lg">$0</strong></p>
+                        <small>Based on avarage sell PV $ <span class="SellPV"></span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center">
+                        <h4>TOTAL VP</h4>
+                    </div>
+                    <div class="panel-body text-center">
+                        <h1 class="GlobalVP hidden-xs hidden-sm hidden-md">0</h1>
+                        <p><strong class="GlobalVP hidden-lg">0</strong></p>
+                        <small>From Distributor Purchases</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="panel panel-info">
+                    <div class="panel-heading text-center">
+                        <h4>PAYABLE VG </h4>
+                    </div>
+                    <div class="panel-body text-center">
+                        <h1 class="TotalPayablePV hidden-xs hidden-sm hidden-md">0</h1>
+                        <p><strong class="TotalPayablePV hidden-lg">0</strong></p>
+                        <small>Only Qualifing VG</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="panel panel-danger">
+                    <div class="panel-heading text-center">
+                        <h4>COMMISSION </h4>
+                    </div>
+                    <div class="panel-body text-center">
+                        <h1 class="TotalPayableCommission hidden-xs hidden-sm hidden-md">$0</h1>
+                        <p><strong class="TotalPayableCommission hidden-lg">$0</strong></p>
+                        <small>Based on avarage sell PV <span class="BuyPV">$0</span></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        DETAILED REPORT
+                    </div>
+                    <div class="panel-body">
+                        <table id="MasterTable" class="table table-hover">
+                           <thead>
+                           <tr>
+                               <th>#</th>
+                               <th>Code</th>
+                               <th>Name</th>
+                               <th>Rank</th>
+                               <th>VP</th>
+                               <th>VG</th>
+                               <th>Qualify</th>
+                               <th>Directs</th>
+                               <th>Total Earned</th>
+                               <th>+ Equal Bonus</th>
+                           </tr>
+                           </thead>
+                            <tbody id="reportTable" class=""></tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- build:js({app,.tmp}) ../scripts/report.js -->
+
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+
+    <!-- endbuild -->
+
+
+    <script>
+
+
+        /*var SellPV = 15.6;
+        var BuyPV = 10;*/
+
+        $(function() {
+            /*
+            //getting data from url fails if json is to complex
+            data = Utils.getUrlParameter('data');
+            data = decodeURIComponent(data);*/
+            data = window.opener.ResidualReportData;
+            GenerateReport(data);
+
+
+
+        });
+
+        function GenerateReport(data) {
+            data_object = data;
+            /*reportData = {
+                globalVP:0,
+                payableVG:0,
+                payableMoney:0
+            };*/
+
+            var tr;
+            for(var r = 0; r< data_object.members.length; r++) {
+
+                tr = $('<tr rowspan="2" class="parenttr"/>');
+                tr.append('<td>' + (r + 1) + '</td>');
+                tr.append('<td>' + data_object.members[r].id + '</td>');
+                tr.append('<td>' + data_object.members[r].name + '</td>');
+                tr.append('<td>' + data_object.members[r].rank + '</td>');
+                tr.append('<td>' + data_object.members[r].vp + '</td>');
+                tr.append('<td>' + data_object.members[r].vg + '</td>');
+                tr.append('<td>' + data_object.members[r].qualify + '</td>');
+                tr.append('<td><a href="#">' + data_object.members[r].EqualBonus.directs.length + '</a></td>');
+                tr.append('<td>' + data_object.members[r].formatedCommission + '</td>');
+                tr.append('<td>' + data_object.members[r].EqualBonus.FormatedBonus + '</td>');
+
+                //reportData.globalVP += parseInt(data_object[r].vp);
+
+                $('#reportTable').append(tr);
+                //click details
+                var subtr = $('<tr class="tr-container" />');
+                subtr.append('<td></td>');
+                //crear sub tabla con detalle
+                var tableDetail = '';
+                tableDetail = '<table class="table table-bordered table-hover"><tr class="detail"><th>Level</th><th>VG</th><th>PAYS%</th><th>VG Payable</th> <th>Earned $</th></tr>';
+
+                for(var c = 0; c<data_object.members[r].residual.length; c++) {
+                   // var payable = Math.round(data_object[r].residual[c].pv * data_object[r].residual[c].commission);
+                   // reportData.payableVG += payable;
+                    tableDetail += '<tr class="detail">';
+                    tableDetail += '<td>' + data_object.members[r].residual[c].level + '</td>';
+                    tableDetail += '<td>' + data_object.members[r].residual[c].pv + '</td>';
+                    tableDetail += '<td>' + data_object.members[r].residual[c].commission + '</td>';
+                    tableDetail += '<td>' + data_object.members[r].residual[c].payable_vg + '</td>';
+                    tableDetail += '<td>' + data_object.members[r].residual[c].amount + '</td>';
+                    tableDetail += '</tr>';
+                }
+
+                tableDetail += '</table>';
+                subtr.append('<td colspan="7">' + tableDetail + '</td>');
+                $('#reportTable').append(subtr);
+
+            }
+
+            //reportData.TotalIncome = accounting.formatMoney((reportData.globalVP * SellPV));
+            //reportData.GlobalVP = reportData.globalVP;
+            //reportData.TotalPayablePV = reportData.payableVG;
+            //reportData.TotalPayableCommission = accounting.formatMoney(reportData.payableVG * BuyPV);
+
+            $('.TotalIncome').html(data_object.total_income_formated);
+            $('.GlobalVP').html(data_object.total_vp);
+            $('.TotalPayablePV').html(data_object.total_payable_vg);
+            $('.TotalPayableCommission').html(data_object.total_pay_commission_formated);
+
+
+            $("#reportTable  tr:not(.parenttr)").hide();
+            $("#reportTable .parenttr:first-child").show();
+            $("#reportTable .detail").show();
+
+            $("#reportTable .parenttr").click(function(){
+                $(this).next("tr").toggle("slide");
+            });
+
+            $('.SellPV').html(data_object.SellPV);
+            $('.BuyPV').html(data_object.CostPV);
+        }
+    </script>
+</body>
+</html>

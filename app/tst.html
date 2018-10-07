@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+    <h1>Working example of cloudinary file upload</h1>
+    <div class="upload_form"></div>
+
+    <div class="thumbnails">
+
+    </div>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.js"></script>
+<script src="bower_components/jquery.iframe-transport/jquery.iframe-transport.js"></script>
+<script src="bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script src="bower_components/jquery-cloudinary/js/jquery.cloudinary.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+<script>
+    $(function() {
+        $('.upload_form').append($.cloudinary.unsigned_upload_tag("mbbxp4vd",
+                {cloud_name: 'www-habitossaludables-com-mx'})
+                .bind('cloudinarydone', ImageDone)
+                .bind('cloudinaryprogress', ReportProgress));
+
+    });
+
+    function ImageDone(e, data) {
+
+                $('.thumbnails').append(($.cloudinary.image(data.result.public_id, {
+                    format: 'jpg', width: 150, height: 100, cloud_name: 'www-habitossaludables-com-mx',
+                    crop: 'thumb', gravity: 'face', effect: 'saturation:50'
+                })));
+
+    }
+
+    function ReportProgress(e, data) {
+        console.log(Math.round((data.loaded * 100.0) / data.total) + '%');
+        $('.progress_bar').css('width',
+                Math.round((data.loaded * 100.0) / data.total) + '%');
+
+    }
+
+</script>
+</body>
+</html>

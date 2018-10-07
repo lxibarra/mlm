@@ -1,0 +1,201 @@
+[
+    {
+        "plan": {
+            "id": 1,
+            "name": "REP. MERCADEO",
+            "price": 400,
+            "configuration": {
+                "gainRole": {
+                    "enable": false,
+                    "RequiredPV": 0,
+                    "pays":0,
+                    "metadata": {
+                        "explanation_enable": "Indicates if this role can be obtained",
+                        "explanation_requiredPV": "Indicates the number of PV's required to gain the role and its benefits",
+                        "explanation_pays": "amount of money a person will earn once it reaches the goal"
+                    }
+                },
+                "PVtoMoney": {
+                    "pvCost": 10,
+                    "metadata": {
+                        "explanation_pvCost": "Single PV cost in this plan. E.G 10 pv * pvCost(10) = $100"
+                    }
+                },
+                "period": {
+                    "days": "30",
+                    "metadata": {
+                        "explanation_days": "Range of days to make the plan valid."
+                    }
+                },
+                "GlobalVolume": {
+                    "RequiredPV": "0",
+                    "metadata": {
+                        "explanation_requiredPV": "Overall pv points required to earn commissions",
+                        "explanation": "This are personal purchase PV's not be confused with the ones earn by sub affiliates"
+                    }
+                },
+                "DirectActives": {
+                    "QTY": "2",
+                    "metadata": {
+                        "explanation_QTY": "Number of needed active direct referrals to earn commission"
+                    }
+                },
+                "legMaximumPV": {
+                    "maxPV": "40%",
+                    "metadata": {
+                        "explanation_maxPV": "Maximum pv percentage to take into account for paying commission"
+                    }
+                }
+            },
+            "commissions": {
+                "residualBonus": {
+                    "RequiredPV": 50,
+                    "tree": {
+                        "direction": "down",
+                        "levels": [
+                            {
+                                "level1": "5%",
+                                "QTY": 0,
+                                "metadata": {
+                                    "explanation_level1": "amount of commission to pay in PV's or money?",
+                                    "explanation_QTY": "number of legs on which to pay. 0 means no limit"
+                                }
+                            },
+                            {
+                                "level2": "5%",
+                                "QTY": 0,
+                                "metadata": {
+                                    "explanation_level1": "amount of commission to pay in PV's or money?",
+                                    "explanation_QTY": "number of legs on which to pay. 0 means no limit"
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "explanation_direction": "It tells the algorithm how con run the array, valid values are down and up",
+                            "explanation_tree": "levels on which plan pays"
+                        }
+                    },
+                    "metadata": {
+                        "explanation": "Compensations based on residual and active members",
+                        "explanation_requiredPV": "Required PV'S to earn residual commission.",
+                        "explanation_tree": "Indicates the levels on which the plan pays PV's"
+                    }
+                },
+                "ReferNewMember": {
+                    "RequiredPV": 30,
+                    "bonus": [
+                        {
+                            "plan": "1",
+                            "tree": {
+                                "direction": "up",
+                                "levels": [
+                                    {
+                                        "level1": {
+                                            "money": "20%",
+                                            "pv": "10",
+                                            "metadata": {
+                                                "explanation_money": "Amount of money to pay depending on plan price",
+                                                "explanation_pv": "PV to grant users"
+                                            }
+                                        },
+                                        "level2": {
+                                            "money": "20%",
+                                            "pv": "10",
+                                            "metadata": {
+                                                "explanation_money": "Amount of money to pay depending on plan price",
+                                                "explanation_pv": "PV to grant users"
+                                            }
+                                        },
+                                        "level3": {
+                                            "money": "20%",
+                                            "pv": "10",
+                                            "metadata": {
+                                                "explanation_money": "Amount of money to pay depending on plan price",
+                                                "explanation_pv": "PV to grant users"
+                                            }
+                                        },
+                                        "level4": {
+                                            "money": "20%",
+                                            "pv": "10",
+                                            "metadata": {
+                                                "explanation_money": "Amount of money to pay depending on plan price",
+                                                "explanation_pv": "PV to grant users"
+                                            }
+                                        },
+                                        "level5": {
+                                            "money": "20%",
+                                            "pv": "10",
+                                            "metadata": {
+                                                "explanation_money": "Amount of money to pay depending on plan price",
+                                                "explanation_pv": "PV to grant users"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "metadata": {
+                                    "explanation_direction": "It tells the algorithm how con run the array, valid values are down and up",
+                                    "explanation_tree": "levels on which plan pays"
+                                }
+                            },
+                            "metadata": {
+                                "explanation_plan": "id of the plan to apply bonuses",
+                                "explanation_tree": "Commissions to pay to each level"
+                            }
+                        }
+                    ],
+                    "metadata": {
+                        "explanation_RequiredPV": "PV'S required to earn this bonus",
+                        "explanation_bonus": "Bonus which affiliates can win."
+                    }
+                }
+            },
+            "repurchase": {
+                "RequiredPV": 30,
+                "tree": {
+                    "direction": "down",
+                    "levels": [
+                        {
+                            "level1": "20%",
+                            "minimumPV": 100,
+                            "metadata": {
+                                "explanation_level1": "Level to pay and the percentage",
+                                "explanation": "Minimum amount of PV client(non mlm) has to buy for MLM affiliate to earn commission. Difference in points will be multiply % and result is what MLM owner will pay"
+                            }
+                        }
+                    ],
+                    "metadata": {
+                        "explanation_direction": "Direction of calculations. Accepted values are Down and Up",
+                        "explanation_levels": "levels on which bonus pays"
+                    }
+                },
+                "metadata": {
+                    "explanation": "Pays commission based on referral clients that are no part of the MLM system.",
+                    "explanation_RequiredPV": "Minimum of self purchase pv to qualify for bonus."
+                }
+            },
+            "mentorBonus": {
+                "RequiredPV": 20,
+                "tree": {
+                    "mode": "recursive",
+                    "levels": [
+                        {
+                            "level": [
+                                {
+                                    "level": []
+                                }
+                            ]
+                        }
+                    ],
+                    "metadata" : {
+                        "explanation_mode": "it tells the algorith how to go through nodes",
+                        "explanation_levels": "Represents the hierarchy that client requires to have and active to earn this bonus. This bonus is only payed once at the time of successful build"
+                    }
+                },
+                "metadata": {
+                    "explanation_RequiredPV": "Required pv's to earn bonus",
+                    "explanation_tree": "Levels on which to pay bonus"
+                }
+            }
+        }
+    }
+]

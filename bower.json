@@ -1,0 +1,18 @@
+{
+  "name": "mlm",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "modernizr": "~2.8.2",
+    "jquery-ui": "~1.11.1",
+    "jquery-template": "~1.4.4",
+    "jQuery.serializeObject": "~2.0.3",
+    "jquery.layout": "*",
+    "Downloadify": "~0.2.1",
+    "jquery-cloudinary": "~1.0.20",
+    "jquery.iframe-transport": "~1.0.0",
+    "pnotify": "~2.0.1",
+    "FileSaver": "*",
+    "accounting.js": "~0.3.2"
+  }
+}

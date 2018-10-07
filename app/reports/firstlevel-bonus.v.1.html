@@ -1,0 +1,150 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <!-- deprecated -->
+    <meta charset="utf-8">
+    <title>MLM</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) ../styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+    <!-- build:css(.tmp) ../styles/main.css -->
+    <link rel="stylesheet" href="../../styles/main.css">
+    <!-- endbuild -->
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">First Level Bonus - Report</a>
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading text-center">
+                        <h4>INCOME</h4>
+                    </div>
+                    <div class="panel-body text-center">
+                        <h1 class="TotalIncome hidden-xs hidden-sm hidden-md">$0</h1>
+                        <p><strong class="TotalIncome hidden-lg">$0</strong></p>
+                        <small>Based on avarage sell PV $ <span class="SellPV"></span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading text-center">
+                        <h4>INCOME DIRECT</h4>
+                    </div>
+                    <div class="panel-body text-center">
+                        <h1 class="TotalIncomeDirect hidden-xs hidden-sm hidden-md">$0</h1>
+                        <p><strong class="TotalIncomeDirect hidden-lg">$0</strong></p>
+                        <small>Based on sales direct/sponsored sell PV $ <span class="SellPV"></span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="panel panel-danger">
+                    <div class="panel-heading text-center">
+                        <h4>Commission</h4>
+                    </div>
+                    <div class="panel-body text-center">
+                        <h1 class="GlobalCommission hidden-xs hidden-sm hidden-md">0</h1>
+                        <p><strong class="GlobalCommission hidden-lg">0</strong></p>
+                        <small>From <span class="CommissionPercentage"></span> each global sales</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        DETAILED REPORT
+                    </div>
+                    <div class="panel-body">
+                        <table id="MasterTable" class="table table-hover">
+                           <thead>
+                           <tr>
+                               <th>#</th>
+                               <th>Code</th>
+                               <th>Name</th>
+                               <th>Rank</th>
+                               <th>VP</th>
+                               <th>Directs & Sponsored</th>
+                               <th>Earned VP from (<span id="percentage"></span>)</th>
+                               <th>Earned $</th>
+                           </tr>
+                           </thead>
+                            <tbody id="reportTable" class=""></tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- build:js({app,.tmp}) ../scripts/report.js -->
+
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+
+    <!-- endbuild -->
+
+
+    <script>
+
+        $(function() {
+            data = window.opener.FirstLevelReport;
+            GenerateReport(data);
+        });
+
+        function GenerateReport(data) {
+
+            $('.SellPV').html(data.SellPV);
+            $('.TotalIncome').html(data.globalIncome);
+            //$('.CommissionPercentage').html(data.commission);
+
+            $('.TotalIncomeDirect').html(data.directIncome_formated);
+            $('#percentage').html(data.percentage);
+
+            $('.GlobalCommission').html(data.commission);
+
+
+            var tr;
+            for(var r = 0; r< data.members.length; r++) {
+
+                tr = $('<tr/>');
+                tr.append('<td>' + (r + 1) + '</td>');
+                tr.append('<td>' + data.members[r].person.id + '</td>');
+                tr.append('<td>' + data.members[r].person.name + '</td>');
+                tr.append('<td>' + data.members[r].person.rank + '</td>');
+                tr.append('<td>' + data.members[r].person.vp + '</td>');
+                tr.append('<td>' + data.members[r].directs.length + '</td>');
+                tr.append('<td>' + data.members[r].paypv + '</td>');
+                tr.append('<td>' + data.members[r].amount_formated + '</td>');
+
+                $('#reportTable').append(tr);
+
+            }
+
+        }
+    </script>
+</body>
+</html>
