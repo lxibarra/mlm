@@ -329,39 +329,38 @@ var MLMTree = {
                     result.highlightPadding = new primitives.common.Thickness(2, 2, 2, 2);
 
 
-                    var itemTemplate = jQuery(
-                        '<div class="bp-item bp-corner-all bt-item-frame">'
-                        + '<div name="titleBackground" class="bp-item bp-corner-all bp-title-frame" style="top: 2px; left: 2px; width: 136px; height: 20px;">'
-                        + '<div name="name" class="bp-item bp-title" style="top: 3px; left: 6px; width: 128px; height: 18px;">'
-                        + '</div>'
-                        + '<img name="slot3" style="height:16px; width:16px; position:absolute; right:0; top:0" src="images/blank.png"/>'
-                        + '</div>'
-                        + '<div class="bp-item bp-photo-frame" style="text-align: center; padding-top: 0px; top: 26px; left: 2px; width: 50px; height: 200px;">'
-                        + '<img name="photo" style="height:60px; width:50px;" />'
-                        + '<img name="slot1" style="height:50px; width:50px;" src="images/blank.png"/>'
-                        + '<img name="slot2" style="height:50px; width:50px;" src="images/blank.png"  />'
-                        + '</div>'
-                        + '<div class="bp-item" style="top: 26px; left: 56px; width: 82px; height: 140px; font-size: 10px;">'
-                        + '<span name="rank"></span>'
-                        + '<br/>'
-                        + '<div><strong>Code: </strong><span name="id"></span></div>'
-                        + '<div>Leg: <span name="leg"></span></div>'
-                        + '<div>Represents: <span name="percentage"></span>%</div>'
-                        + '<div>VP: <span name="vp"></span></div>'
-                        + '<div>VG: <span name="vg"></span></div>'
-                        + '<div style=" display: block; width:100%; height:2px; text-align: center">'
-                        + '<div style="width:90%; height:1px; margin:0 auto; display:block; border-top:solid 1px #ccc;"></div>'
-                        + '</div>'
-                        + '<div><strong style="color:darkgreen">Pays: </strong><i name="rankDepth">n/a</i> Levels </div>'
-                        + '<div><strong>Req. PV\'s: </strong> <span name="rankRequiredPV"></span></div>'
-                        + '<div>Qualifies: <span name="qualify"></span></div>'
-                        + '<!--div>Paying-PV: <span name="payingpv"></span></div-->'
-                        + '<div>Won: <span name="formatedCommission"></span></div>'
-                        +'</div>'
-                        + '</div>'
-                    ).css({
-                            width: result.itemSize.width + "px",
-                            height: result.itemSize.height + "px"
+                    var itemTemplate = jQuery(`
+                        <div class="bp-item bp-corner-all bt-item-frame">
+                          <div name="titleBackground" class="bp-item bp-corner-all bp-title-frame" style="top: 2px; left: 2px; width: 136px; height: 20px;">
+                            <div name="name" class="bp-item bp-title" style="top: 3px; left: 6px; width: 128px; height: 18px;"></div>
+                            <img name="slot3" style="height:16px; width:16px; position:absolute; right:0; top:0" src="images/blank.png"/>
+                          </div>
+                        <div class="bp-item bp-photo-frame" style="text-align: center; padding-top: 0px; top: 26px; left: 2px; width: 50px; height: 200px;">
+                          <img name="photo" style="height:60px; width:50px;" />
+                          <img name="slot1" style="height:50px; width:50px;" src="images/blank.png"/>
+                          <img name="slot2" style="height:50px; width:50px;" src="images/blank.png"  />
+                        </div>
+                        <div class="bp-item" style="top: 26px; left: 56px; width: 82px; height: 140px; font-size: 10px;">
+                        <span name="rank"></span>
+                        <br/>
+                        <div><strong>Code: </strong><span name="id"></span></div>
+                            <div>Leg: <span name="leg"></span></div>
+                            <div>Represents: <span name="percentage"></span>%</div>
+                            <div>VP: <span name="vp"></span></div>
+                            <div>VG: <span name="vg"></span></div>
+                            <div style=" display: block; width:100%; height:2px; text-align: center">
+                            <div style="width:90%; height:1px; margin:0 auto; display:block; border-top:solid 1px #ccc;"></div>
+                        </div>
+                        <div><strong style="color:darkgreen">Pays: </strong><i name="rankDepth">n/a</i> Levels </div>
+                        <div><strong>Req. PV's: </strong> <span name="rankRequiredPV"></span></div>
+                        <div>Qualifies: <span name="qualify"></span></div>
+                        <!--div>Paying-PV: <span name="payingpv"></span></div-->
+                        <div>Won: <span name="formatedCommission"></span></div>
+                        </div>
+                        </div>
+                    `).css({
+                            width: `${result.itemSize.width}px`,
+                            height: `${result.itemSize.height}px`
                         }).addClass("bp-item bp-corner-all bt-item-frame");
 
                     result.itemTemplate = itemTemplate.wrap('<div>').parent().html();
@@ -514,14 +513,14 @@ var MLMTree = {
                                 if(data.newrank == "false")
                                     data.newrank = false;
                             }*/
-    	                    
+
                             //if an invalid date is provided we get the current date
                             if(typeof Utils.makeDateFromISO(data.joineddate) === 'undefined') {
                                 var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
                                 data.joineddate = (new Date(Date.now() - tzoffset)).toISOString().slice(0,-1);
                                 data.joineddate = data.joineddate.substr(0, 10);
                             }
-                           
+
                             if(Utils.isNumber(data.vp) == false) {
                                 data.vp = 0;
                             }
@@ -809,6 +808,3 @@ var MLMTree = {
 $(function() {
     MLMTree.init();
 });
-
-
-
