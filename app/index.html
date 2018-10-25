@@ -67,92 +67,7 @@
     </div-->
 
     <!-- it should be moved to a template -->
-    <div id="NodeEdit" title="Distributor Data">
-        <form role="form" id="nodeModalForm">
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                            Code
-                        </span>
-                    <input type="hidden" name="edit" value="true" data-value="present item tells app this is form editing. Its needed because css clases and names are shared" >
-                    <input type="input" name="id" class="form-control input-sm" placeholder="Person Code">
-                        <span class="input-group-addon">
-                            <input type="checkbox" name="personactive">
-                        </span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        Name
-                    </span>
-                    <input type="input" name="name" class="form-control input-sm" placeholder="Person Name">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="btn-group btn-group-justified">
-                    <a href="#" class="btn btn-info newImage">Upload Picture </a>
-                    <a href="#" class="btn btn-primary defaultImage">Default</a>
-                </div>
-            </div>
-            <div class="form-group text-center">
-                <i class="imageProgress"></i>
-                <img src="images/user.jpg" class="personPhoto img-responsive img-rounded">
-                <div class="hide">
-                    <input type="hidden" name="photo" value="images/user.jpg">
-                    <div class="uploadControl"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <select class="form-control input-sm" name="rank"></select>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="newrank"> <strong>Person just got rank?</strong>
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        Sponsor
-                    </span>
-                    <input type="input" name="sponsor" class="form-control input-sm" placeholder="Sponsor Code">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        Position
-                    </span>
-                    <input type="input" name="parent" class="form-control input-sm" placeholder="Position code (under who)">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        Joined Date
-                    </span>
-                    <input type="date" name="joineddate" class="form-control input-sm" placeholder="yyyy-mm-dd">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        VP
-                    </span>
-                    <input type="number" name="vp" class="form-control input-sm" placeholder="Personal Volume (VP)">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        VG
-                    </span>
-                    <input type="number" name="vg" class="form-control input-sm" placeholder="Global Volume (VG)">
-                </div>
-            </div>
-        </form>
-    </div>
+    
 
   <div id="paramConfiguration" title="Configuration Data">
       <form role="form"></form>
@@ -169,6 +84,7 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/modernizr/modernizr.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="bower_components/jQuery.serializeObject/jQuery.serializeObject.js"></script>
     <script src="bower_components/jquery.layout/dist/jquery.layout-latest.js"></script>
