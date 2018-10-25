@@ -30,278 +30,26 @@
 
   </head>
   <body>
-  <nav class="navbar navbar-default" role="navigation">
-      <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">Habitos Saludables Simulator (RC)</a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-              <ul class="nav navbar-nav navbar-right">
-                  <!--li><a href="#">Link</a></li-->
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span></a>
-                      <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Image Storage</a></li>
-                          <li><a href="#">Database Settings</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">About</a></li>
-                      </ul>
-                  </li>
-              </ul>
-          </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-  </nav>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <!-- Menu Options -->
-                <!-- This has to be  -->
-                <div >
-                <div class="panel-group" id="accordion">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                    Network
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <h5>MLM Structure</h5>
-                                        <a href="#" class="btn btn-info btn-block" id="importbtn">Open</a>
-                                        <a href="#" download="mlmstructure.txt" id="exportbtn" class="btn btn-primary btn-block">Save</a>
-                                        <div class="hide">
-                                            <input type="file" name="attachment" id="treeimport" />
-                                        </div>
-                                        <hr/>
-
-                                    <form role="form" id="nodeForm">
-                                        <div class="form-group">
-                                            <h5>Add user <a href="#" id="btnQuickAdd" class="btn btn-info btn-xs pull-right">Quick Add</a></h5>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    Code
-                                                </span>
-                                                <input type="input" name="id" class="form-control input-sm" placeholder="Person Code">
-                                                <span class="input-group-addon">
-                                                    <input type="checkbox" name="personactive" checked="checked">
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    Name
-                                                </span>
-                                                <input type="input" name="name" class="form-control input-sm" placeholder="Person Name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control input-sm" name="rank"></select>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="newrank"> <strong>Person just got rank?</strong>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="btn-group btn-group-justified">
-                                                <a href="#" class="btn btn-info newImage">Upload Picture </a>
-                                                <a href="#" class="btn btn-primary defaultImage">Default</a>
-                                            </div>
-                                        </div>
-                                        <div class="form-group text-center">
-                                            <i class="imageProgress"></i>
-                                            <img src="images/user.jpg" class="personPhoto img-responsive img-rounded">
-                                            <div class="hide">
-                                                <input type="hidden" name="photo" value="images/user.jpg">
-                                                <div class="uploadControl"></div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    Sponsor
-                                                </span>
-                                            <input type="input" name="sponsor" class="form-control input-sm" placeholder="Sponsor Code">
-                                                </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    Position
-                                                </span>
-                                            <input type="input" name="parent" class="form-control input-sm" placeholder="Position code (under who)">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    Joined Date
-                                                </span>
-                                                <input type="date" name="joineddate" class="form-control input-sm" placeholder="yyyy-mm-dd">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    VP
-                                                </span>
-                                                <input type="number" name="vp" class="form-control input-sm" placeholder="Personal Volume (VP)">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    VG
-                                                </span>
-                                            <input type="input" name="vg" class="form-control input-sm" placeholder="Global Volume (VG)">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-success btn-block" id="btnAdd">Add Person</button>
-                                            <button class="btn btn-default btn-block" id="btnClear">Clean Fields</button>
-                                        </div>
-                                    </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                    Execution
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseThree" class="panel-collapse">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                <h5>Select Bonuses</h5>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" value="" checked="checked">
-                                        Residual Bonus
-                                    </label>
-
-                                    <div class="btn-group pull-right">
-                                        <a class="btn btn-primary btn-xs" onclick="javascript:CalculaBonoResidual();">Execute <i class="fa fa-refresh"></i></a>
-                                        <a href="reports/residual-bonus.html" id="residualbonusbtn" target="_blank" class="btn btn-info btn-xs">Report <i class="fa fa-calculator"></i></a>
-                                    </div>
-
-                                    <hr/>
-                                </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="" checked="checked">
-                                                Mentor Bonus
-                                            </label>
-                                            <div class="btn-group pull-right">
-                                                <a class="btn btn-primary btn-xs" onclick="javascript:CalculateMentorBonus();">Execute <i class="fa fa-refresh"></i></a>
-                                                <a href="reports/mentor-bonus.html" id="mentorbonusbtn" target="_blank" class="btn btn-info btn-xs">Report <i class="fa fa-calculator"></i></a>
-                                            </div>
-                                            <hr/>
-                                        </div>
-                                <div class="checkbox disabled">
-                                    <label>
-                                        <input type="checkbox" value="" checked="checked">
-                                        First Level Bonus
-                                    </label>
-                                    <div class="btn-group pull-right">
-                                        <a class="btn btn-primary btn-xs" onclick="javascript:CalculateFirstLevelBonus();">Execute <i class="fa fa-refresh"></i></a>
-                                        <a href="reports/firstlevel-bonus.html" id="firstlevelbtn" target="_blank" class="btn btn-info btn-xs">Report <i class="fa fa-calculator"></i></a>
-                                    </div>
-                                    <hr/>
-                                </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="" checked="checked">
-                                                Rank upgrade bonus
-                                            </label>
-                                            <div class="btn-group pull-right">
-                                                <a class="btn btn-primary btn-xs" onclick="javascript:CalculateRankAdvancedBonus();">Execute <i class="fa fa-refresh"></i></a>
-                                                <a href="reports/rankadvance-bonus.html" id="advancedRankbtn" target="_blank" class="btn btn-info btn-xs">Report <i class="fa fa-calculator"></i></a>
-                                            </div>
-                                            <hr/>
-                                        </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" value="" checked="checked">
-                                       Fast Start Bonus
-                                    </label>
-                                    <div class="btn-group pull-right">
-                                        <a class="btn btn-primary btn-xs" onclick="javascript:CalculateFastStartBonus();">Execute <i class="fa fa-refresh"></i></a>
-                                        <a href="reports/faststart-bonus.html" id="Faststartbtn" target="_blank" class="btn btn-info btn-xs">Report <i class="fa fa-calculator"></i></a>
-                                    </div>
-                                    <hr/>
-                                </div>
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#collapseFour">
-                                    Configuration
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseFour" class="panel-collapse">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <button id="conf_residual" class="btn btn-default btn-sm btn-block left"><i class="fa fa-gear"></i> Residual</button>
-                                        <button id="conf_mentor" class="btn btn-default btn-sm btn-block left"><i class="fa fa-gear"></i> Mentor</button>
-                                        <button id="conf_first" class="btn btn-default btn-sm btn-block left"><i class="fa fa-gear"></i> First Level</button>
-                                        <button id="conf_upgrade" class="btn btn-default btn-sm btn-block left"><i class="fa fa-gear"></i> Rank Upgrade</button>
-                                        <button id="conf_fast" class="btn btn-default btn-sm btn-block left"><i class="fa fa-gear"></i> Fast Start</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- End Menu Options -->
-
-                </div>
-
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9">
+            <div class="col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading"><strong>Element Status Description: </strong>
+
                         <span class="node-item selected"></span> Selected
                         <span class="node-item enabled"></span> Enabled
                         <span class="node-item disabled"></span> Disabled
                         <span class="node-item sponsored"></span> Sponsored
+
+
+                        <div class="hide">
+                              <input type="file" name="attachment" id="treeimport" />
+                        </div>
                         <div class="pull-right">
+                            <a href="#" class="btn btn-info btn-xs" id="importbtn">Load my network</a>
                             Fit in view <input type="checkbox" id="orgFit" checked="checked">
                         </div>
                     </div>
@@ -413,7 +161,7 @@
   <div class="container-fluid">
       <div class="row">
           <div class="col-xs-12">
-          
+
           </div>
       </div>
   </div>

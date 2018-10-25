@@ -111,10 +111,10 @@ var MLMTree = {
 
             //required buttons
             var buttons = [];
-            buttons.push(new primitives.orgdiagram.ButtonConfig("UnParentNode", "ui-icon-eject", "Unparent"));
+            /*buttons.push(new primitives.orgdiagram.ButtonConfig("UnParentNode", "ui-icon-eject", "Unparent"));
             buttons.push(new primitives.orgdiagram.ButtonConfig("RemoveNode", "ui-icon-close", "Delete"));
             buttons.push(new primitives.orgdiagram.ButtonConfig("updateNodeModal", "ui-icon-pencil", "Edit"));
-            buttons.push(new primitives.orgdiagram.ButtonConfig("AddSubNode", "ui-icon-person", "Add under"));
+            buttons.push(new primitives.orgdiagram.ButtonConfig("AddSubNode", "ui-icon-person", "Add under"));*/
 
             MLMTree.vars.options = new primitives.orgdiagram.Config();
 
